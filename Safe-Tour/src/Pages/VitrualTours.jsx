@@ -6,10 +6,10 @@ const northEastTours = [
     title: "Umiam Lake Panoramic View",
     state: "Meghalaya",
     location: "Barapani, Shillong Outskirts",
-    description: "Immersive 360 view of the vast reservoir surrounded by pine-covered hills. Known for water sports and tourist safety checkpoints.",
+    description: "Immersive view of the vast reservoir surrounded by pine-covered hills. Known for water sports and tourist safety checkpoints.",
     safetyStatus: "🟢 Safe & Monitored",
     embedUrl: "https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=0&mute=1",
-    previewImage: "https://s7ap1.scene7.com/is/image/incredibleindia/umiam-lake-shillong-meghalaya-1-hero?$1920X700$",
+    previewImage: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: "VT-02",
@@ -19,7 +19,7 @@ const northEastTours = [
     description: "Explore India's largest Buddhist monastery nestled in the Himalayas. Virtual tour covers the grand prayer hall and mountain ridge views.",
     safetyStatus: "🟢 Weather Clear",
     embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&mute=1",
-    previewImage: "https://s7ap1.scene7.com/is/image/incredibleindia/tawang-monastery-arunachal-pradesh-attr-hero?$1920X700$",
+    previewImage: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: "VT-03",
@@ -29,7 +29,7 @@ const northEastTours = [
     description: "Witness the engineering marvel of bio-engineered bridges grown from rubber tree roots across crystal-clear forest streams.",
     safetyStatus: "🟡 Trekking Advisory Active",
     embedUrl: "https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=0&mute=1",
-    previewImage: "https://s7ap1.scene7.com/is/image/incredibleindia/living-root-bridge-meghalaya-attr-hero?$1920X700$",
+    previewImage: "https://images.unsplash.com/photo-1596401057633-5446febfaef0?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: "VT-04",
@@ -39,7 +39,7 @@ const northEastTours = [
     description: "Virtual safari view of World Heritage wildlife sanctuary, home to the endangered one-horned rhinoceros and lush grasslands.",
     safetyStatus: "🟢 Ranger Escort Active",
     embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&mute=1",
-    previewImage: "https://s7ap1.scene7.com/is/image/incredibleindia/kaziranga-national-park-assam-attr-hero?$1920X700$",
+    previewImage: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80",
   }
 ];
 
@@ -53,9 +53,9 @@ function VirtualTours() {
   };
 
   return (
-    <div style={pageStyle}>
+    <div style={{ padding: "30px", background: "#f6f8fb", minHeight: "100vh", fontFamily: "Arial, sans-serif" }}>
       {/* HEADER */}
-      <div style={headerStyle}>
+      <div style={{ marginBottom: "25px" }}>
         <h1 style={{ margin: 0, fontSize: "30px", color: "#172033" }}>🌐 360° Virtual Tours — North-East India</h1>
         <p style={{ marginTop: "6px", color: "#7b8495", fontSize: "14px" }}>
           Explore breathtaking destinations, tourist landmarks, and safety zones across the Seven Sister States in immersive 360°
@@ -63,22 +63,24 @@ function VirtualTours() {
       </div>
 
       {/* TOURS GRID */}
-      <div style={gridStyle}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(420px, 1fr))", gap: "25px" }}>
         {northEastTours.map((tour) => (
-          <div key={tour.id} style={cardStyle}>
-            <div style={viewerContainerStyle}>
+          <div key={tour.id} style={{ background: "white", borderRadius: "16px", overflow: "hidden", border: "1px solid #e6eaf0", display: "flex", flexDirection: "column", boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.05)" }}>
+            <div style={{ height: "220px", position: "relative", background: "#1e293b" }}>
               <img 
                 src={tour.previewImage} 
                 alt={tour.title} 
                 style={{ width: "100%", height: "100%", objectFit: "cover" }} 
               />
-              <span style={badgeStyle}>{tour.safetyStatus}</span>
+              <span style={{ position: "absolute", top: "12px", right: "12px", background: "rgba(22, 163, 74, 0.9)", color: "white", padding: "6px 12px", borderRadius: "20px", fontSize: "11px", fontWeight: "bold" }}>
+                {tour.safetyStatus}
+              </span>
             </div>
 
-            <div style={bodyStyle}>
-              <div style={titleRowStyle}>
+            <div style={{ padding: "20px", display: "flex", flexDirection: "column", flexGrow: 1 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
                 <h3 style={{ margin: 0, fontSize: "18px", color: "#172033" }}>{tour.title}</h3>
-                <span style={stateStyle}>{tour.state}</span>
+                <span style={{ fontSize: "12px", background: "#e0e7ff", color: "#3730a3", padding: "4px 8px", borderRadius: "6px", fontWeight: "600" }}>{tour.state}</span>
               </div>
 
               <p style={{ fontSize: "13px", color: "#697386", margin: "0 0 12px 0" }}>📍 {tour.location}</p>
@@ -86,16 +88,16 @@ function VirtualTours() {
                 {tour.description}
               </p>
 
-              <div style={footerStyle}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid #edf0f4", paddingTop: "15px" }}>
                 <button 
-                  style={audioBtnStyle} 
+                  style={{ background: "#f1f5f9", border: "1px solid #cbd5e1", color: "#334155", padding: "8px 14px", borderRadius: "8px", fontSize: "12px", fontWeight: "600", cursor: "pointer" }} 
                   onClick={() => handleAudioGuide(tour.title)}
                 >
                   🎧 {playingAudio === tour.title ? "Playing..." : "Play Audio Guide"}
                 </button>
 
                 <button 
-                  style={tourBtnStyle}
+                  style={{ background: "#2563eb", border: "none", color: "white", padding: "9px 18px", borderRadius: "8px", fontSize: "13px", fontWeight: "600", cursor: "pointer" }}
                   onClick={() => setActiveModalTour(tour)}
                 >
                   Launch 360° View ↗
@@ -108,11 +110,11 @@ function VirtualTours() {
 
       {/* IMMERSIVE 360 MODAL */}
       {activeModalTour && (
-        <div style={modalOverlayStyle} onClick={() => setActiveModalTour(null)}>
-          <div style={modalContentStyle} onClick={(e) => e.stopPropagation()}>
+        <div style={{ position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh", background: "rgba(0, 0, 0, 0.6)", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 1000, padding: "20px" }} onClick={() => setActiveModalTour(null)}>
+          <div style={{ background: "white", padding: "25px", borderRadius: "16px", width: "100%", maxWidth: "750px", boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)", maxHeight: "95vh", overflowY: "auto" }} onClick={(e) => e.stopPropagation()}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "15px" }}>
               <h2 style={{ margin: 0, color: "#172033" }}>{activeModalTour.title} ({activeModalTour.state})</h2>
-              <button onClick={() => setActiveModalTour(null)} style={closeBtnStyle}>✕</button>
+              <button onClick={() => setActiveModalTour(null)} style={{ background: "none", border: "none", fontSize: "22px", cursor: "pointer", color: "#6b7280" }}>✕</button>
             </div>
 
             <div style={{ width: "100%", height: "380px", background: "#000", borderRadius: "10px", overflow: "hidden" }}>
@@ -142,137 +144,5 @@ function VirtualTours() {
     </div>
   );
 }
-
-// Inline Styles
-const pageStyle = {
-  padding: "30px",
-  background: "#f6f8fb",
-  minHeight: "100vh",
-  fontFamily: "Arial, sans-serif"
-};
-
-const headerStyle = {
-  marginBottom: "25px"
-};
-
-const gridStyle = {
-  display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(420px, 1fr))",
-  gap: "25px"
-};
-
-const cardStyle = {
-  background: "white",
-  borderRadius: "16px",
-  overflow: "hidden",
-  border: "1px solid #e6eaf0",
-  display: "flex",
-  flexDirection: "column",
-  boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.05)"
-};
-
-const viewerContainerStyle = {
-  height: "220px",
-  position: "relative",
-  background: "#000"
-};
-
-const badgeStyle = {
-  position: "absolute",
-  top: "12px",
-  right: "12px",
-  background: "rgba(22, 163, 74, 0.9)",
-  color: "white",
-  padding: "6px 12px",
-  borderRadius: "20px",
-  fontSize: "11px",
-  fontWeight: "bold"
-};
-
-const bodyStyle = {
-  padding: "20px",
-  display: "flex",
-  flexDirection: "column",
-  flexGrow: 1
-};
-
-const titleRowStyle = {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  marginBottom: "8px"
-};
-
-const stateStyle = {
-  fontSize: "12px",
-  background: "#e0e7ff",
-  color: "#3730a3",
-  padding: "4px 8px",
-  borderRadius: "6px",
-  fontWeight: "600"
-};
-
-const footerStyle = {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  borderTop: "1px solid #edf0f4",
-  paddingTop: "15px"
-};
-
-const audioBtnStyle = {
-  background: "#f1f5f9",
-  border: "1px solid #cbd5e1",
-  color: "#334155",
-  padding: "8px 14px",
-  borderRadius: "8px",
-  fontSize: "12px",
-  fontWeight: "600",
-  cursor: "pointer"
-};
-
-const tourBtnStyle = {
-  background: "#2563eb",
-  border: "none",
-  color: "white",
-  padding: "9px 18px",
-  borderRadius: "8px",
-  fontSize: "13px",
-  fontWeight: "600",
-  cursor: "pointer"
-};
-
-const modalOverlayStyle = {
-  position: "fixed",
-  top: 0,
-  left: 0,
-  width: "100vw",
-  height: "100vh",
-  background: "rgba(0, 0, 0, 0.6)",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  zIndex: 1000,
-  padding: "20px"
-};
-
-const modalContentStyle = {
-  background: "white",
-  padding: "25px",
-  borderRadius: "16px",
-  width: "100%",
-  maxWidth: "750px",
-  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-  maxHeight: "95vh",
-  overflowY: "auto"
-};
-
-const closeBtnStyle = {
-  background: "none",
-  border: "none",
-  fontSize: "22px",
-  cursor: "pointer",
-  color: "#6b7280"
-};
 
 export default VirtualTours;
